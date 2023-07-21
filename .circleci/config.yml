@@ -30,19 +30,19 @@ jobs:
       - run:
           name: set Ruby version
           command: echo "ruby-2.4" > ~/.ruby-version
-
-      - restore_cache:
-          key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
+# ERROR
+      # - restore_cache:
+      #     key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
 
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
 
       - run: npm install
-
-      - save_cache:
-          key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
-          paths:
-            - ~/.cache/npm
+# ERROR
+      # - save_cache:
+      #     key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
+      #     paths:
+      #       - ~/.cache/npm
 
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
@@ -55,12 +55,13 @@ jobs:
       - run:
           command: bundle install
           working_directory: ios
+# ERROR
+      # - save_cache:
+      #     key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+      #     paths:
+      #       - vendor/bundle
 
-      - save_cache:
-          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-          paths:
-            - vendor/bundle
-
+# ERROR IN bundle exec fastlane beta
       - run:
           command: bundle exec fastlane beta
           working_directory: ios
