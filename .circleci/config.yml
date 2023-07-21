@@ -35,7 +35,7 @@ jobs:
           command: |
             cd ios
             mkdir /tmp/artifacts;
-            xcodebuild -workspace CicdIos.xcworkspace -scheme CicdIos -configuration Release -allowProvisioningUpdates true -archivePath "ios/build/CicdIos.xcarchive" -allowProvisioningUpdates -alltargets -exportOptionsPlist "ios/ExportOptions.plist"
+            xcodebuild -workspace CicdIos.xcworkspace -scheme CicdIos -configuration Release -allowProvisioningUpdates true -exportArchive -archivePath "ios/build/CicdIos.xcarchive" -allowProvisioningUpdates -exportOptionsPlist "ios/ExportOptions.plist"
       - store_artifacts:
           path: /tmp/artifacts
 workflows:
