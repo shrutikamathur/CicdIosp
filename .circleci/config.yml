@@ -1,0 +1,46 @@
+version: 2.1
+jobs:
+  build:
+    environment:
+      APPLE_ID: ios@zlucksolutions.com
+      APPLE_PASSWORD: iosZluck4
+
+    macos:
+      xcode: "13.2.1" 
+
+    steps:
+      - checkout
+
+      # Restore the React Native project dependencies
+      - restore_cache:
+          key: project-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Install Node.js dependencies
+          command: yarn install
+    
+      # Install CocoaPods dependencies
+      - run:
+          name: Install CocoaPods
+          command: |
+            cd ios
+            pod install
+    
+      # Save the React Native project dependencies to cache
+      - save_cache:
+          key: project-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Build & Test IOS
+          command: |
+            cd ios
+            mkdir /tmp/artifacts;
+            xcodebuild -workspace CDTry.xcworkspace -scheme Try -configuration Release -archivePath "ios/build/CDTry.xcarchive" -allowProvisioningUpdates archive 
+            xcodebuild -exportArchive -archivePath "ios/build/CDTry.xcarchive" -exportPath "ios/build/" -exportOptionsPlist "ios/ExportOptions.plist"
+      - store_artifacts:
+          path: /tmp/artifacts
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
