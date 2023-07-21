@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
 
-      # Restore the React Native project dependencies
+      #  the React Native project dependencies
       - restore_cache:
           key: project-dependencies-{{ checksum "package.json" }}
       - run:
