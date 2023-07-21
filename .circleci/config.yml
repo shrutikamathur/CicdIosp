@@ -1,46 +1,82 @@
-version: 2.1
+version: 2
 jobs:
-  build:
-    environment:
-      APPLE_ID: ios@zlucksolutions.com
-      APPLE_PASSWORD: iosZluck4
+  node:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: npm install
 
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: test-results
+
+  ios-beta:
     macos:
-      xcode: "13.2.1" 
-
+      xcode: '13.2.1'
+    working_directory: ~/repo
+    shell: /bin/bash --login -o pipefail
     steps:
       - checkout
 
-      #  the React Native project dependencies
+      - run:
+          name: set Ruby version
+          command: echo "ruby-2.4" > ~/.ruby-version
+
       - restore_cache:
-          key: project-dependencies-{{ checksum "package.json" }}
-      - run:
-          name: Install Node.js dependencies
-          command: yarn install
-    
-      # Install CocoaPods
-      - run:
-          name: Install CocoaPods
-          command: |
-            cd ios
-            pod install
-    
-      # 
+          key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: npm install
+
       - save_cache:
-          key: project-dependencies-{{ checksum "package.json" }}
+          key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
+          paths:
+            - ~/.cache/npm
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
             - node_modules
+
+      - restore_cache:
+          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+
       - run:
-          name: Build & Test IOS
-          command: |
-            cd ios
-            mkdir /tmp/artifacts;
-            xcodebuild -workspace CicdIos.xcworkspace -scheme CicdIos -configuration Release -allowProvisioningUpdates
-            xcodebuild -exportArchive -archivePath "ios/build/CicdIos.xcarchive" -exportOptionsPlist "ios/ExportOptions.plist"
+          command: bundle install
+          working_directory: ios
+
+      - save_cache:
+          key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          command: bundle exec fastlane beta
+          working_directory: ios
+          no_output_timeout: 30m
+
+      - store_test_results:
+          path: ios/test-results
+
       - store_artifacts:
-          path: /tmp/artifacts
+          path: ios/ProcureNetworks.ipa
+
 workflows:
   version: 2
-  build:
+  build-deploy:
     jobs:
-      - build
+      - node
+      - ios-beta:
+          requires:
+            - node
