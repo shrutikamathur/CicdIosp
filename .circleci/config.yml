@@ -25,7 +25,7 @@ jobs:
             cd ios
             pod install
     
-      # Save the React Native project dependencies to cache
+      # Save the Native project dependencies to cache
       - save_cache:
           key: project-dependencies-{{ checksum "package.json" }}
           paths:
