@@ -18,7 +18,7 @@ jobs:
           name: Install Node.js dependencies
           command: yarn install
     
-      # Install CocoaPods dependencies
+      # Install CocoaPods
       - run:
           name: Install CocoaPods
           command: |
