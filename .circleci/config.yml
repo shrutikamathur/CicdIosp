@@ -65,7 +65,7 @@ jobs:
       - run:
           command: bundle exec fastlane beta
           working_directory: ios
-          no_output_timeout: 30m
+          # no_output_timeout: 30m
 
       - store_test_results:
           path: ios/test-results
