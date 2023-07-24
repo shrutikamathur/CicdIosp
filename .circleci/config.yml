@@ -20,7 +20,7 @@ jobs:
       #     path: test-results
 
       - store_artifacts:
-          path: /ios/artifacts
+          path: ios/CicdIos.ipa
 
   ios-beta:
     macos:
@@ -51,6 +51,9 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
             - node_modules
+      - run:
+          name: "Create .env file"
+          command: echo -e "APP_STORE_CONNECT_API_KEY_ISSUER_ID=${APP_STORE_CONNECT_API_KEY_ISSUER_ID}\nAPP_STORE_CONNECT_API_KEY_KEY=${APP_STORE_CONNECT_API_KEY_KEY}\nAPP_STORE_CONNECT_API_KEY_KEY_ID=${APP_STORE_CONNECT_API_KEY_KEY_ID}" > .env
 # 
       # - restore_cache:
       #     key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
@@ -130,12 +133,17 @@ jobs:
           command: bundle exec fastlane ios custom_lane > /ios/artifacts
           working_directory: ios
           # no_output_timeout: 30m
-
+      - run:
+          command: rm -rf Pods && pod install && bundle exec fastlane release_ipa --verbose
+          no_output_timeout: 30m
+          working_directory: ios
+      - store_artifacts:
+          path: ios/CicdIos.ipa
       # - store_test_results:
       #     path: ios/test-results
 
-      - store_artifacts:
-          path: /ios/artifacts
+      # - store_artifacts:
+      #     path: /ios/artifacts
 
 workflows:
   version: 2
