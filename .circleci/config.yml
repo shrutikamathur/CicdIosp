@@ -20,7 +20,7 @@ jobs:
       #     path: test-results
 
       - store_artifacts:
-          path: /artifacts
+          path: /ios/artifacts
 
   ios-beta:
     macos:
@@ -127,7 +127,7 @@ jobs:
       # - run: sudo gem install signet -v 0.17.0
       # - run: sudo gem install unf_ext -v 0.0.8.2
       - run:
-          command: bundle exec fastlane ios custom_lane > /artifacts
+          command: bundle exec fastlane ios custom_lane > /ios/artifacts
           working_directory: ios
           # no_output_timeout: 30m
 
@@ -135,7 +135,7 @@ jobs:
       #     path: ios/test-results
 
       - store_artifacts:
-          path: /artifacts
+          path: /ios/artifacts
 
 workflows:
   version: 2
