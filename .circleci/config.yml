@@ -127,7 +127,7 @@ jobs:
       - run: sudo gem install signet -v 0.17.0
       - run: sudo gem install unf_ext -v 0.0.8.2
       - run:
-          command: bundle exec fastlane beta
+          command: bundle exec fastlane ios custom_lane
           working_directory: ios
           # no_output_timeout: 30m
 
