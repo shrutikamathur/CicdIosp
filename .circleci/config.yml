@@ -59,8 +59,10 @@ jobs:
       # # - run: gem update
       # - run: gem update fastlane
       # - run: gem update bundler
+      - run: gem install bundler
       - run:
           command: bundle install
+      # - run: gem install bundler:2.4.17
       - run: gem install fastlane
       - run: gem update fastlane
       - run: cd ios && fastlane init
@@ -83,7 +85,6 @@ jobs:
 
 # ERROR IN bundle exec fastlane beta
       - run: fastlane run bundle_install
-      - run: bundle install
       - run:
           command: bundle exec fastlane
           working_directory: ios
