@@ -51,10 +51,16 @@ jobs:
 # ERROR
       # - restore_cache:
       #     key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
-
+      - run: gem list fastlane
+      - run: gem install fastlane
+      - run: gem update
+      - run: gem update fastlane
+      - run: gem update bundler
       - run:
           command: bundle install
           working_directory: ios
+      - run: ruby -v
+      
 # ERROR
       # - save_cache:
       #     key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
