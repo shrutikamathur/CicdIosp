@@ -85,6 +85,9 @@ jobs:
 
 # ERROR IN bundle exec fastlane beta
       - run: fastlane run bundle_install
+      - run: ruby --version
+      - run: gem --version
+      - run: sudo gem install CFPropertyList -v 3.0.6
       - run:
           command: bundle exec fastlane
           working_directory: ios
