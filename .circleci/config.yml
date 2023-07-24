@@ -127,15 +127,15 @@ jobs:
       - run: sudo gem install signet -v 0.17.0
       - run: sudo gem install unf_ext -v 0.0.8.2
       - run:
-          command: bundle exec fastlane ios custom_lane
+          command: bundle exec fastlane ios custom_lane > /tmp/artifacts/artifact-2
           working_directory: ios
           # no_output_timeout: 30m
 
-      - store_test_results:
-          path: ios/test-results
+      # - store_test_results:
+      #     path: ios/test-results
 
       - store_artifacts:
-          path: ios/ProcureNetworks.ipa
+          path: /tmp/artifacts
 
 workflows:
   version: 2
