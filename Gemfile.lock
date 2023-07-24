@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  gem 'fastlane'
   specs:
     CFPropertyList (3.0.6)
       rexml
