@@ -30,9 +30,9 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: set Ruby version
-          command: echo "ruby-2.4" > ~/.ruby-version
+      # - run:
+      #     name: set Ruby version
+      #     command: echo "ruby-2.4" > ~/.ruby-version
 # 
       # - restore_cache:
       #     key: npm-v1-{{ checksum "package.lock.json" }}-{{ arch }}
@@ -127,7 +127,7 @@ jobs:
       - run: sudo gem install signet -v 0.17.0
       - run: sudo gem install unf_ext -v 0.0.8.2
       - run:
-          command: bundle exec fastlane
+          command: bundle exec fastlane beta
           working_directory: ios
           # no_output_timeout: 30m
 
