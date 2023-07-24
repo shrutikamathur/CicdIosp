@@ -61,6 +61,8 @@ jobs:
       # - run: gem update bundler
       - run:
           command: bundle install
+      - run: cd ios && fastlane init
+      - run: cd android && fastlane init
       - run: sudo gem install fastlane -NV
           # working_directory: ios
       # - run: bundle install danger
