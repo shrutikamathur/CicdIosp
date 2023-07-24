@@ -60,8 +60,8 @@ jobs:
           command: bundle install
           working_directory: ios
       - run: ruby -v
-      - run: gem uninstall fastlane
-      - run: gem install fastlane
+      # - run: gem uninstall fastlane
+      # - run: gem install fastlane
       
 # ERROR
       # - save_cache:
