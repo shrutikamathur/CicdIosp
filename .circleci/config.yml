@@ -1,6 +1,6 @@
 version: 2
 orbs:
-# Declare a dependency on the welcome-orb
+# a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 jobs:
   node:
