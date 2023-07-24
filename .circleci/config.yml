@@ -3,24 +3,24 @@ orbs:
 # a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 jobs:
-  node:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - run: npm install
+  # node:
+  #   working_directory: ~/repo
+  #   docker:
+  #     - image: circleci/node:8
+  #   steps:
+  #     - checkout
+  #     - run: npm install
 
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - node_modules
+  #     - persist_to_workspace:
+  #         root: ~/repo
+  #         paths:
+  #           - node_modules
 
-      # - store_test_results:
-      #     path: test-results
+  #     # - store_test_results:
+  #     #     path: test-results
 
-      - store_artifacts:
-          path: /tmp/artifacts
+  #     - store_artifacts:
+  #         path: /tmp/artifacts
 
   ios-beta:
     macos:
@@ -127,7 +127,7 @@ jobs:
       # - run: sudo gem install signet -v 0.17.0
       # - run: sudo gem install unf_ext -v 0.0.8.2
       - run:
-          command: bundle exec fastlane ios custom_lane > /tmp/artifacts/artifact-2
+          command: bundle exec fastlane ios custom_lane > /artifacts
           working_directory: ios
           # no_output_timeout: 30m
 
@@ -135,13 +135,13 @@ jobs:
       #     path: ios/test-results
 
       - store_artifacts:
-          path: /tmp/artifacts
+          path: /artifacts
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - node
+      # - node
       - ios-beta:
-          requires:
-            - node
+          # requires:
+            # - node
