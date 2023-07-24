@@ -53,7 +53,7 @@ jobs:
       #     key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
       - run: gem list fastlane
       - run: gem install fastlane
-      - run: gem update
+      # - run: gem update
       - run: gem update fastlane
       - run: gem update bundler
       - run:
