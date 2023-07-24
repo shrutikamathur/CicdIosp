@@ -62,6 +62,7 @@ jobs:
       #       - vendor/bundle
 
 # ERROR IN bundle exec fastlane beta
+      - run: fastlane run bundle_install
       - run:
           command: bundle exec fastlane beta
           working_directory: ios
