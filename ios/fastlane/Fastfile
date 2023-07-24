@@ -1,23 +1,61 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+APP_ID = "com.zluck.rn.demo"
+PROVISIONING_PROFILE_APPSTORE = "match AppStore com.zluck.rn.demo"
+TEAM_ID = "97ZG7PH35K"
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+settings_to_override_release = { 
+  :BUNDLE_IDENTIFIER => com.zluck.rn.demo, 
+  :PROVISIONING_PROFILE_SPECIFIER => com.zluck.rn.demo, 
+  :DEVELOPMENT_TEAM => 97ZG7PH35K, 
+}
 
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+
+  before_all do
+    setup_circle_ci
+  end
+
+  desc "Export Release IPA & upload Release to App Store"
+  lane :release_ipa do
+    api_key = app_store_connect_api_key( 
+      key_id: 4RXGZ33CNK, 
+      issuer_id: $APP_STORE_CONNECT_API_KEY_ISSUER_ID, 
+      key_content: $APP_STORE_CONNECT_API_KEY_KEY 
+    )
+    increment_build_number(
+      build_number: app_store_build_number(
+        api_key: api_key,
+        initial_build_number: 0,
+        version: get_version_number(xcodeproj: "CicdIos.xcodeproj"),
+        live: false
+      ) + 1,
+    )
+    match(
+      app_identifier: com.zluck.rn.demo,
+      readonly: is_ci,
+      type:"appstore"
+    )
+   build_app(
+      scheme:"CicdIos", 
+      export_method:"app-store",
+      skip_profile_detection:true,
+      configuration: "Release",
+      workspace: "CicdIos.xcworkspace",
+      xcargs: settings_to_override_release,
+      export_options: {
+        provisioningProfiles: { 
+          APP_ID => com.zluck.rn.demo
+        },
+        installerSigningCertificate: "CICDNEW.mobileprovision"
+      }
+    )
+    deliver(
+      api_key: api_key,
+# If we set submit_for_review: true, the new release will be sent to review automatically, so we don’t need to click on it manually from Apple Store Connect website.
+      submit_for_review: false,
+      force: true,
+      precheck_include_in_app_purchases: false
+    )
   end
 end
