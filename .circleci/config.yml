@@ -16,11 +16,11 @@ jobs:
           paths:
             - node_modules
 
-      - store_test_results:
-          path: test-results
+      # - store_test_results:
+      #     path: test-results
 
       - store_artifacts:
-          path: test-results
+          path: /tmp/artifacts
 
   ios-beta:
     macos:
@@ -87,45 +87,45 @@ jobs:
       - run: fastlane run bundle_install
       - run: ruby --version
       - run: gem --version
-      - run: sudo gem install CFPropertyList -v 3.0.6
-      - run: sudo gem install addressable -v 2.8.4
-      - run: sudo gem install aws-sdk-s3 -v 1.131.0
-      - run: sudo gem install dotenv -v 2.8.1
-      - run: sudo gem install excon -v 0.100.0
-      - run: sudo gem install faraday -v 1.10.3
-      - run: sudo gem install fastimage -v 2.2.7
-      - run: sudo gem install google-apis-androidpublisher_v3 -v 0.46.0
-      - run: sudo gem install google-apis-playcustomapp_v1 -v 0.13.0
-      - run: sudo gem install google-cloud-storage -v 1.44.0
-      - run: sudo gem install json -v 2.6.3
-      - run: sudo gem install jwt -v 2.7.1
-      - run: sudo gem install mini_magick -v 4.12.0
-      - run: sudo gem install multipart-post -v 2.3.0
-      - run: sudo gem install plist -v 3.7.0
-      - run: sudo gem install simctl -v 1.6.10
-      - run: sudo gem install xcodeproj -v 1.22.0
-      - run: sudo gem install public_suffix -v 5.0.3
-      - run: sudo gem install aws-sdk-core -v 3.178.0
-      - run: sudo gem install aws-sdk-kms -v 1.71.0
-      - run: sudo gem install aws-sigv4 -v 1.6.0
-      - run: sudo gem install faraday-multipart -v 1.0.4
-      - run: sudo gem install faraday-retry -v 1.0.3
-      - run: sudo gem install http-cookie -v 1.0.5
-      - run: sudo gem install google-apis-core -v 0.11.1
-      - run: sudo gem install digest-crc -v 0.6.5
-      - run: sudo gem install google-apis-iamcredentials_v1 -v 0.17.0
-      - run: sudo gem install google-apis-storage_v1 -v 0.19.0
-      - run: sudo gem install googleauth -v 1.7.0
-      - run: sudo gem install claide -v 1.1.0
-      - run: sudo gem install aws-partitions -v 1.791.0
-      - run: sudo gem install jmespath -v 1.6.2
-      - run: sudo gem install representable -v 3.2.0
-      - run: sudo gem install webrick -v 1.8.1
-      - run: sudo gem install rake -v 13.0.6
-      - run: sudo gem install google-cloud-env -v 1.6.0
-      - run: sudo gem install google-cloud-errors -v 1.3.1
-      - run: sudo gem install signet -v 0.17.0
-      - run: sudo gem install unf_ext -v 0.0.8.2
+      # - run: sudo gem install CFPropertyList -v 3.0.6
+      # - run: sudo gem install addressable -v 2.8.4
+      # - run: sudo gem install aws-sdk-s3 -v 1.131.0
+      # - run: sudo gem install dotenv -v 2.8.1
+      # - run: sudo gem install excon -v 0.100.0
+      # - run: sudo gem install faraday -v 1.10.3
+      # - run: sudo gem install fastimage -v 2.2.7
+      # - run: sudo gem install google-apis-androidpublisher_v3 -v 0.46.0
+      # - run: sudo gem install google-apis-playcustomapp_v1 -v 0.13.0
+      # - run: sudo gem install google-cloud-storage -v 1.44.0
+      # - run: sudo gem install json -v 2.6.3
+      # - run: sudo gem install jwt -v 2.7.1
+      # - run: sudo gem install mini_magick -v 4.12.0
+      # - run: sudo gem install multipart-post -v 2.3.0
+      # - run: sudo gem install plist -v 3.7.0
+      # - run: sudo gem install simctl -v 1.6.10
+      # - run: sudo gem install xcodeproj -v 1.22.0
+      # - run: sudo gem install public_suffix -v 5.0.3
+      # - run: sudo gem install aws-sdk-core -v 3.178.0
+      # - run: sudo gem install aws-sdk-kms -v 1.71.0
+      # - run: sudo gem install aws-sigv4 -v 1.6.0
+      # - run: sudo gem install faraday-multipart -v 1.0.4
+      # - run: sudo gem install faraday-retry -v 1.0.3
+      # - run: sudo gem install http-cookie -v 1.0.5
+      # - run: sudo gem install google-apis-core -v 0.11.1
+      # - run: sudo gem install digest-crc -v 0.6.5
+      # - run: sudo gem install google-apis-iamcredentials_v1 -v 0.17.0
+      # - run: sudo gem install google-apis-storage_v1 -v 0.19.0
+      # - run: sudo gem install googleauth -v 1.7.0
+      # - run: sudo gem install claide -v 1.1.0
+      # - run: sudo gem install aws-partitions -v 1.791.0
+      # - run: sudo gem install jmespath -v 1.6.2
+      # - run: sudo gem install representable -v 3.2.0
+      # - run: sudo gem install webrick -v 1.8.1
+      # - run: sudo gem install rake -v 13.0.6
+      # - run: sudo gem install google-cloud-env -v 1.6.0
+      # - run: sudo gem install google-cloud-errors -v 1.3.1
+      # - run: sudo gem install signet -v 0.17.0
+      # - run: sudo gem install unf_ext -v 0.0.8.2
       - run:
           command: bundle exec fastlane ios custom_lane > /tmp/artifacts/artifact-2
           working_directory: ios
