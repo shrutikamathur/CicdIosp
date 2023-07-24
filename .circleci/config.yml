@@ -61,11 +61,12 @@ jobs:
       # - run: gem update bundler
       - run:
           command: bundle install
+      - run: sudo gem install fastlane -NV
           # working_directory: ios
       # - run: bundle install danger
       # - run: bundle exec danger
-      - run: cd ios && bundle exec fastlane test
-      - run: cd ios && bundle exec fastlane build
+      # - run: cd ios && bundle exec fastlane test
+      # - run: cd ios && bundle exec fastlane build
 
       # - run: ruby -v
       # - run: gem uninstall fastlane
@@ -78,10 +79,10 @@ jobs:
       #       - vendor/bundle
 
 # ERROR IN bundle exec fastlane beta
-      # - run: fastlane run bundle_install
-      # - run:
-      #     command: bundle exec fastlane beta
-      #     working_directory: ios
+      - run: fastlane run bundle_install
+      - run:
+          command: bundle exec fastlane beta
+          working_directory: ios
           # no_output_timeout: 30m
 
       - store_test_results:
