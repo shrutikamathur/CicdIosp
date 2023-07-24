@@ -48,7 +48,7 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
             - node_modules
-# ERROR
+# 
       # - restore_cache:
       #     key: bundle-v1-{{ checksum "ios/Gemfile.lock" }}-{{ arch }}
       - run: gem list fastlane
