@@ -31,9 +31,9 @@ platform :ios do
     increment_build_number(
       build_number: app_store_build_number(
         api_key: (
-          key_id: "2YN89ZLRHV",
-          issuer_id: "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
-          key_filepath: "AuthKey_2YN89ZLRHV.p8"
+          key_id = "2YN89ZLRHV",
+          issuer_id = "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
+          key_filepath = "AuthKey_2YN89ZLRHV.p8"
         )
         initial_build_number: 0,
         version: get_version_number(xcodeproj: "CicdIos.xcodeproj"),
@@ -61,9 +61,9 @@ platform :ios do
     )
     deliver(
       api_key: (
-          key_id: "2YN89ZLRHV",
-          issuer_id: "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
-          key_filepath: "AuthKey_2YN89ZLRHV.p8"
+          key_id = "2YN89ZLRHV",
+          issuer_id = "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
+          key_filepath = "AuthKey_2YN89ZLRHV.p8"
         )
 # If we set submit_for_review: true, the new release will be sent to review automatically, so we don’t need to click on it manually from Apple Store Connect website.
       submit_for_review: false,
