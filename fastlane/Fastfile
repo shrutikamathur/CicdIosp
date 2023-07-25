@@ -30,25 +30,21 @@ platform :ios do
     )
     increment_build_number(
       build_number: app_store_build_number(
-        api_key: (
-          key_id = "2YN89ZLRHV",
-          issuer_id = "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
-          key_filepath = "AuthKey_2YN89ZLRHV.p8"
-        )
+        api_key: api_key,
         initial_build_number: 0,
         version: get_version_number(xcodeproj: "CicdIos.xcodeproj"),
         live: false
-      ) + 1,
+      ) + 1
     )
     match(
       app_identifier: "com.zluck.rn.demo",
       readonly: is_ci,
-      type:"appstore"
+      type: "appstore"
     )
-   build_app(
-      scheme:"CicdIos", 
-      export_method:"app-store",
-      skip_profile_detection:true,
+    build_app(
+      scheme: "CicdIos", 
+      export_method: "app-store",
+      skip_profile_detection: true,
       configuration: "Release",
       workspace: "CicdIos.xcworkspace",
       xcargs: settings_to_override_release,
@@ -60,14 +56,14 @@ platform :ios do
       }
     )
     deliver(
-      api_key: (
-          key_id = "2YN89ZLRHV",
-          issuer_id = "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
-          key_filepath = "AuthKey_2YN89ZLRHV.p8"
-        )
-# If we set submit_for_review: true, the new release will be sent to review automatically, so we don’t need to click on it manually from Apple Store Connect website.
+      api_key: {
+        key_id: "2YN89ZLRHV",
+        issuer_id: "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
+        key_filepath: "AuthKey_2YN89ZLRHV.p8"
+      },
+      # If we set submit_for_review: true, the new release will be sent to review automatically, so we don’t need to click on it manually from Apple Store Connect website.
       submit_for_review: false,
-      force: true,
+      # force: true,
       precheck_include_in_app_purchases: false
     )
   end
