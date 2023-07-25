@@ -60,7 +60,7 @@ jobs:
       - run: 
           command: bundle exec fastlane ios release_ipa
           no_output_timeout: 30m
-          working_directory: /Users/mac/Projects/React-Native/CicdIos
+          working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
           # working_directory: ios
   ios-release:
     macos:
