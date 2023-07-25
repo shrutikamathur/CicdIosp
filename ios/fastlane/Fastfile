@@ -3,9 +3,9 @@ PROVISIONING_PROFILE_APPSTORE = "match AppStore com.zluck.rn.demo"
 TEAM_ID = "97ZG7PH35K"
 
 settings_to_override_release = { 
-  :BUNDLE_IDENTIFIER => com.zluck.rn.demo, 
-  :PROVISIONING_PROFILE_SPECIFIER => com.zluck.rn.demo, 
-  :DEVELOPMENT_TEAM => 97ZG7PH35K, 
+  :BUNDLE_IDENTIFIER => "com.zluck.rn.demo", 
+  :PROVISIONING_PROFILE_SPECIFIER => "com.zluck.rn.demo", 
+  :DEVELOPMENT_TEAM => "97ZG7PH35K", 
 }
 
 default_platform(:ios)
@@ -32,7 +32,7 @@ platform :ios do
       ) + 1,
     )
     match(
-      app_identifier: com.zluck.rn.demo,
+      app_identifier: "com.zluck.rn.demo",
       readonly: is_ci,
       type:"appstore"
     )
@@ -45,7 +45,7 @@ platform :ios do
       xcargs: settings_to_override_release,
       export_options: {
         provisioningProfiles: { 
-          APP_ID => com.zluck.rn.demo
+          APP_ID => "com.zluck.rn.demo"
         },
         installerSigningCertificate: "CICDNEW.mobileprovision"
       }
