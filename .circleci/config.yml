@@ -53,7 +53,9 @@ jobs:
       # - run: sudo gem install unf_ext -v 0.0.8.2
       - run: gem install fastlane
       - run: 
-          command: bundle exec fastlane release_ipa
+          command: cd ios && bundle exec fastlane release_ipa
+          no_output_timeout: 30m
+          working_directory: ios
   ios-release:
     macos:
       xcode: '13.3.0'
