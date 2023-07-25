@@ -57,7 +57,7 @@ jobs:
       # - run: sudo gem install unf_ext -v 0.0.8.2
       - run: gem install fastlane
       - run: gem update fastlane
-      - run: cd ios && touch Gemfile && bundle install
+      - run: touch Gemfile && bundle install
       - run: cd ios && fastlane init
       - run: 
           command: bundle exec fastlane release_ipa
