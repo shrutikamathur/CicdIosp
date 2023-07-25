@@ -58,7 +58,7 @@ jobs:
       - run: gem install fastlane
       - run: gem update fastlane
       - run: touch Gemfile && bundle install
-      - run: cd ios && fastlane init
+      - run: fastlane init
       - run: 
           command: bundle exec fastlane release_ipa
           no_output_timeout: 30m
