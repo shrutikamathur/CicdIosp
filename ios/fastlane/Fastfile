@@ -30,10 +30,11 @@ platform :ios do
     )
     increment_build_number(
       build_number: app_store_build_number(
-        api_key: "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg1mLxyrIrvz/QH06R
-        i1adMqsPUl8VAwVN8z2DMNepH4KgCgYIKoZIzj0DAQehRANCAATIzJKgnEbSDsly
-        bHUFzQNeW1rr8EK0rn721Pb+pDtAyQaEySs8pw83ZcLLI85AWKEeZpBehWR+GRMw
-        vu8F+QlL",
+        api_key: (
+          key_id: "2YN89ZLRHV",
+          issuer_id: "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
+          key_filepath: "AuthKey_2YN89ZLRHV.p8"
+        )
         initial_build_number: 0,
         version: get_version_number(xcodeproj: "CicdIos.xcodeproj"),
         live: false
@@ -59,10 +60,11 @@ platform :ios do
       }
     )
     deliver(
-      api_key: "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg1mLxyrIrvz/QH06R
-      i1adMqsPUl8VAwVN8z2DMNepH4KgCgYIKoZIzj0DAQehRANCAATIzJKgnEbSDsly
-      bHUFzQNeW1rr8EK0rn721Pb+pDtAyQaEySs8pw83ZcLLI85AWKEeZpBehWR+GRMw
-      vu8F+QlL",
+      api_key: (
+          key_id: "2YN89ZLRHV",
+          issuer_id: "69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1",
+          key_filepath: "AuthKey_2YN89ZLRHV.p8"
+        )
 # If we set submit_for_review: true, the new release will be sent to review automatically, so we don’t need to click on it manually from Apple Store Connect website.
       submit_for_review: false,
       force: true,
