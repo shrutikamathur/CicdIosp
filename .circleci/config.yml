@@ -54,8 +54,6 @@ jobs:
       - run: gem install fastlane
       - run: 
           command: bundle exec fastlane release_ipa
-          no_output_timeout: 30m
-          working_directory: ios
   ios-release:
     macos:
       xcode: '13.3.0'
