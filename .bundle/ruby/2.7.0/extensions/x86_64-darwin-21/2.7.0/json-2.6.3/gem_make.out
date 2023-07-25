@@ -1,0 +1,13 @@
+current directory: /Users/mac/Projects/React-Native/CicdIos/.bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+/Users/mac/.rvm/rubies/ruby-2.7.5/bin/ruby -I /Users/mac/.rvm/rubies/ruby-2.7.5/lib/ruby/2.7.0 -r ./siteconf20230725-3398-j6tqfp.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mac/Projects/React-Native/CicdIos/.bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/mac/Projects/React-Native/CicdIos/.bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/mac/Projects/React-Native/CicdIos/.bundle/ruby/2.7.0/gems/json-2.6.3/ext/json
+make "DESTDIR=" install
