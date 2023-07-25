@@ -16,8 +16,8 @@ jobs:
           working_directory: ~/repo
           command: gem install bundler
       # - run: bundle install
-      - run: ruby --version
-      - run: gem --version
+      # - run: ruby --version
+      # - run: gem --version
       # - run: sudo gem install CFPropertyList -v 3.0.6
       # - run: sudo gem install addressable -v 2.8.4
       # - run: sudo gem install aws-sdk-s3 -v 1.131.0
