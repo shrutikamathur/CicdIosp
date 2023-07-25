@@ -12,6 +12,8 @@ jobs:
           name: "Create .env file"
           command: echo -e "APP_STORE_CONNECT_API_KEY_ISSUER_ID=69a6de8a-3bf4-47e3-e053-5b8c7c11a4d1\nAPP_STORE_CONNECT_API_KEY_KEY=${APP_STORE_CONNECT_API_KEY_KEY}\nAPP_STORE_CONNECT_API_KEY_KEY_ID=4RXGZ33CNK" > .env
       - run: fastlane run bundle_install
+      - run: ruby --version
+      - run: gem --version
       # - run: sudo gem install CFPropertyList -v 3.0.6
       # - run: sudo gem install addressable -v 2.8.4
       # - run: sudo gem install aws-sdk-s3 -v 1.131.0
@@ -53,7 +55,7 @@ jobs:
       # - run: sudo gem install unf_ext -v 0.0.8.2
       - run: gem install fastlane
       - run: 
-          command: cd ios && bundle exec fastlane release_ipa
+          command: bundle exec fastlane ios release_ipa
           no_output_timeout: 30m
           working_directory: ios
   ios-release:
