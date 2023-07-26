@@ -26,6 +26,7 @@ jobs:
           name: Set up iOS directory
           command: mkdir -p ios
       - run: bundle install
+      - run: bundle update
       # - run:
       #     name: Debug Info
       #     command: |
