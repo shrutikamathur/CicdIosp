@@ -9,6 +9,7 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - run: fastlane run bundle_install
+      - run: gem uninstall bundler
       - run: 
           working_directory: ~/repo
           command: gem install bundler
