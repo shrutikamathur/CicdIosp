@@ -27,7 +27,7 @@ jobs:
           command: mkdir -p ios
       - run: bundle install
       - run: bundle update
-      - run: bundle exec which fastlane release_ipa
+      - run: bundle exec which fastlane
       # - run:
       #     name: Debug Info
       #     command: |
