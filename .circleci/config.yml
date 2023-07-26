@@ -24,7 +24,7 @@ jobs:
           name: Set up iOS directory
           command: mkdir -p ios
       - run: bundle install
-      -- run:
+      - run:
           name: Debug Info
           command: |
             echo "Current Directory: $(pwd)"
