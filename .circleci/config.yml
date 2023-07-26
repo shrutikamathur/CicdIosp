@@ -14,7 +14,6 @@ jobs:
           command: gem install bundler
       - run: gem install fastlane
       - run: gem update fastlane
-      - run: touch Gemfile && bundle install
       # - run: 
       #     command: xcodebuild -xcworkspace CicdIos.xcworkspace -scheme CicdIos -configuration Release -destination 'generic/platform=iOS' -archivePath /Users/mac/Library/Developer/Xcode/Archives/2023-07-26/CicdIos\ 2023-07-26\ 14.45.18.xcarchive BUNDLE_IDENTIFIER=com.zluck.rn.demo DEVELOPMENT_TEAM=97ZG7PH35K archive
       #     working_directory: ios
@@ -25,6 +24,15 @@ jobs:
           name: Set up iOS directory
           command: mkdir -p ios
       - run: bundle install
+      -- run:
+          name: Debug Info
+          command: |
+            echo "Current Directory: $(pwd)"
+            echo "Ruby Version: $(ruby -v)"
+            echo "Gem Environment: $(gem env)"
+            which fastlane
+            bundle exec fastlane --version
+
       - run:
           name: Change to iOS directory and run Fastlane
           command: cd ios && bundle exec fastlane release_ipa
