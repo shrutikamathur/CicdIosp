@@ -26,14 +26,14 @@ jobs:
           name: Set up iOS directory
           command: mkdir -p ios
       - run: bundle install
-      - run:
-          name: Debug Info
-          command: |
-            echo "Current Directory: $(pwd)"
-            echo "Ruby Version: $(ruby -v)"
-            echo "Gem Environment: $(gem env)"
-            which fastlane
-            bundle exec fastlane --version
+      # - run:
+      #     name: Debug Info
+      #     command: |
+      #       echo "Current Directory: $(pwd)"
+      #       echo "Ruby Version: $(ruby -v)"
+      #       echo "Gem Environment: $(gem env)"
+      #       which fastlane
+      #       bundle exec fastlane --version
 
       - run:
           name: Change to iOS directory and run Fastlane
