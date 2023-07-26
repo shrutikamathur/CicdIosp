@@ -31,7 +31,7 @@ jobs:
       - run: bundle update
       - run: which fastlane
       - run: bundle exec which fastlane
-      - run: bundle exec fastlane _3.0.0_ doctor
+      # - run: bundle exec fastlane _3.0.0_ doctor
       # - run:
       #     name: Debug Info
       #     command: |
@@ -43,7 +43,8 @@ jobs:
 
       - run:
           name: Change to iOS directory and run Fastlane
-          command: cd ios && bundle exec fastlane release_ipa
+          command: cd ios && fastlane release_ipa
+          # bundle exec fastlane release_ipa
           no_output_timeout: 30m
   # ios-release:
   #   macos:
