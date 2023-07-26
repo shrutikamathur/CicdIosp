@@ -27,6 +27,7 @@ jobs:
           command: mkdir -p ios
       - run: bundle install
       - run: bundle update
+      - run: bundle exec which fastlane
       # - run:
       #     name: Debug Info
       #     command: |
@@ -38,7 +39,7 @@ jobs:
 
       - run:
           name: Change to iOS directory and run Fastlane
-          command: cd ios && bundle exec fastlane release_ipa
+          command: cd ios && bundle exec release_ipa
           no_output_timeout: 30m
   # ios-release:
   #   macos:
