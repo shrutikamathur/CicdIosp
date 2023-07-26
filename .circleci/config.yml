@@ -24,6 +24,7 @@ jobs:
       - run:
           name: Set up iOS directory
           command: mkdir -p ios
+      - run: bundle install
       - run:
           name: Change to iOS directory and run Fastlane
           command: cd ios && bundle exec fastlane release_ipa
