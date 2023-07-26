@@ -8,6 +8,7 @@ jobs:
     working_directory: ~/repo
     shell: /bin/bash --login -o pipefail
     steps:
+      - run: ruby --version
       - run: fastlane run bundle_install
       - run: gem uninstall bundler
       - run: 
