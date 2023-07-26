@@ -15,6 +15,7 @@ jobs:
           working_directory: ~/repo
           command: gem install bundler
       - run: gem install fastlane
+      - run: gem update bundler
       - run: gem update fastlane
       - run: touch Gemfile
       # - run: 
@@ -28,8 +29,9 @@ jobs:
           command: mkdir -p ios
       - run: bundle install
       - run: bundle update
+      - run: which fastlane
       - run: bundle exec which fastlane
-      - run: bundle exec fastlane doctor
+      - run: bundle exec fastlane _3.0.0_ doctor
       # - run:
       #     name: Debug Info
       #     command: |
