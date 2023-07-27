@@ -41,7 +41,11 @@ jobs:
       - run: gem update bundler
       - run: bundle install
       - run: bundle update
-      - run: cd ios && rm -rf Pods && pod install
+      - run:
+          command: |
+            cd ios
+            rm -rf Pods
+            pod install
       - run: 
           command: |
             bundle exec fastlane release_ipa
