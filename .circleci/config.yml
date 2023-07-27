@@ -5,7 +5,7 @@ jobs:
   ios-build:
     macos:
       xcode: '13.2.1'
-    working_directory: mkdir -p /Users/mac/Projects/React-Native/CicdIos/ios
+    working_directory: mkdir /Users/mac/Projects/React-Native/CicdIos/ios
     shell: /bin/bash --login -o pipefail
     steps:
     # 
@@ -16,7 +16,6 @@ jobs:
       - run: bundle install
       - run: gem update bundler
       - run: bundle update
-      - run: cd Pods
       - run: 
           command: |
             fastlane --version
