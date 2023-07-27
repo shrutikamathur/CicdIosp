@@ -9,6 +9,7 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - run: ruby --version
+#  trigger that specific lane and perform the associated actions within it
       - run: fastlane run bundle_install
       - run: gem uninstall bundler
       - run: 
@@ -40,10 +41,10 @@ jobs:
       #       echo "Gem Environment: $(gem env)"
       #       which fastlane
       #       bundle exec fastlane --version
-
+# create and release an IPA (iOS App Store Package) file
       - run:
           name: Change to iOS directory and run Fastlane
-          command: cd ios && fastlane release_ipa
+          command: bundle exec fastlane release_ipa
           # bundle exec fastlane release_ipa
           no_output_timeout: 30m
   # ios-release:
