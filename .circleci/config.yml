@@ -42,6 +42,7 @@ jobs:
       #       which fastlane
       #       bundle exec fastlane --version
 # create and release an IPA (iOS App Store Package) file
+      - run: brew install --cask
       - run: brew cask install fastlane
       - run: sudo gem install fastlane -NV
       - run:
