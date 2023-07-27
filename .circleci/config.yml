@@ -16,13 +16,13 @@ jobs:
       - run: touch Gemfile
       - run: 
           command: |
-            cd ios 
+            cd ~/Projects/React-Native/CicdIos/ios 
             bundle install
       # - run: gem update bundler
       # - run: bundle update
       - run: 
           command: |
-            cd ios
+            cd ~/Projects/React-Native/CicdIos/ios
             fastlane --version
             bundle exec fastlane ios release_ipa
       # - run:
