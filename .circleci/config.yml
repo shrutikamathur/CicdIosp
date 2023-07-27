@@ -9,10 +9,10 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       # - run: gem install fastlane
-      - run: touch Gemfile
+      # - run: touch Gemfile
       - run: bundle install
-      - run: gem update bundler
-      - run: bundle update
+      # - run: gem update bundler
+      # - run: bundle update
       - run: 
           command: | 
             fastlane --version
