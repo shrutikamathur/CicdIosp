@@ -8,15 +8,13 @@ jobs:
     working_directory: mkdir /Users/mac/Projects/React-Native/CicdIos/ios
     shell: /bin/bash --login -o pipefail
     steps:
-    # 
-      # - run: mkdir -p ~/Projects/React-Native/CicdIos
       - run: gem install fastlane
       - run: fastlane --version
-          # working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
       - run: touch Gemfile
       - run: bundle install
       - run: gem update bundler
       - run: bundle update
+      - run: echo $pwd
       - run: 
           command: |
             fastlane --version
