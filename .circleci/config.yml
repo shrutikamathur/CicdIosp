@@ -42,11 +42,9 @@ jobs:
       - run: bundle update
       - run: 
           command: |
-            cd ios  
             fastlane --version
       - run: 
           command: |
-            cd ios 
             bundle exec fastlane release_ipa
 workflows:
   version: 2
