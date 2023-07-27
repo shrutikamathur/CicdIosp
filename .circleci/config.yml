@@ -52,7 +52,7 @@ jobs:
       - run: bundle install --binstubs
       - run:
           name: Change to iOS directory and run Fastlane
-          command: cd ios && bundle exec fastlane release_ipa
+          command: cd ios && bundle exec release_ipa
           # bundle exec fastlane release_ipa
           no_output_timeout: 30m
   # ios-release:
