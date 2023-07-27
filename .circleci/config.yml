@@ -10,13 +10,13 @@ jobs:
     steps:
       # - run: gem install fastlane
       # - run: touch Gemfile
-      - run: bundle install
+      - run: sudo bundle install
       # - run: gem update bundler
       # - run: bundle update
       - run: 
-          command: | 
+          command: |
             fastlane --version
-            bundle exec fastlane release_ipa
+            sudo bundle exec fastlane release_ipa
       # - run:
       #     name: Set up iOS directory
       #     command: mkdir -p ios && cd ios && bundle exec fastlane release_ipa
