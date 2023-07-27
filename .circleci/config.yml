@@ -5,18 +5,16 @@ jobs:
   ios-build:
     macos:
       xcode: '13.2.1'
-    working_directory: /Users/mac/Projects/React-Native/CicdIos
+    working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
     shell: /bin/bash --login -o pipefail
     steps:
       - run: gem install fastlane
-      - run: fastlane --version
       - run: touch Gemfile
       - run: bundle install
       - run: gem update bundler
       - run: bundle update
       - run: 
-          command: |
-            cd ios  
+          command: | 
             fastlane --version
             bundle exec fastlane release_ipa
       # - run:
