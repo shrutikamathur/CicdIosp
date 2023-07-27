@@ -43,9 +43,9 @@ jobs:
       - run: bundle update
       - run:
           command: |
-            cd /Users/mac/Projects/React-Native/CicdIos/ios
             rm -rf Pods
             pod install
+          working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
       # - run: 
       #     command: |
       #       bundle exec fastlane release_ipa
