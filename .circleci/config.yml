@@ -5,7 +5,7 @@ jobs:
   ios-build:
     macos:
       xcode: '13.2.1'
-    # working_directory: /Users/mac/Projects/React-Native/CicdIos
+    working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
     shell: /bin/bash --login -o pipefail
     steps:
     # 
