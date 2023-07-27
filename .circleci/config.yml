@@ -40,6 +40,7 @@ jobs:
       - run: bundle install
       - run: gem update bundler
       - run: bundle update
+      - run: ls -la ios
       - run: 
           command: |
             cd ios  
