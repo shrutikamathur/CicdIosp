@@ -5,16 +5,16 @@ jobs:
   ios-build:
     macos:
       xcode: '13.2.1'
-    working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
+    working_directory: mkdir -p ~/Projects/React-Native/CicdIos
     shell: /bin/bash --login -o pipefail
     steps:
     # 
       # - run: mkdir -p ~/Projects/React-Native/CicdIos
       - run: 
           command: |
-            sudo cd fastlane
+             cd fastlane
 # gem install fastlane
-          working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
+          # working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
       # - run: touch Gemfile
       # - run: 
       #     command: |
