@@ -15,7 +15,7 @@ jobs:
       - run: gem update bundler
       - run: bundle update
       - run: 
-          command: bundle exec fastlane release_ipa
+          command: cd ios && bundle exec fastlane release_ipa
           no_output_timeout: 30m
           working_directory: ios
 workflows:
