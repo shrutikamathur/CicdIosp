@@ -16,6 +16,7 @@ jobs:
       - run: fastlane --version
       - run: touch Gemfile
       - run: bundle install
+      - run: gem install bundler
       - run: gem update bundler
       - run: bundle update
       - run: pwd
