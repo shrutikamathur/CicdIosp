@@ -13,7 +13,7 @@ jobs:
       - run: bundle install
       - run: gem update bundler
       - run: bundle update
-      - run: bundle exec fastlane release_ipa
+      - run: bundle exec fastlane ios beta
 workflows:
   version: 2
   build:
