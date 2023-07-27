@@ -21,8 +21,10 @@ jobs:
       # - run:
       #     name: Set up iOS directory
       #     command: mkdir -p ios && cd ios && bundle exec fastlane release_ipa
-      # - run: 
-      #     command: cd ios && bundle exec fastlane release_ipa
+      - run: 
+          command: |
+            cd ios 
+            bundle exec fastlane release_ipa
       #     no_output_timeout: 30m
 workflows:
   version: 2
