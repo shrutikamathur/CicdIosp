@@ -36,7 +36,7 @@ jobs:
     steps:
       - run:
           command: ls /Users
-          # working_directory: cd /Users/mac/Projects/React-Native/CicdIos
+          working_directory: cd /Users/mac/Projects/React-Native/CicdIos
       - run: gem install fastlane
       - run: fastlane --version
       - run: touch Gemfile
