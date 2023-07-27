@@ -44,7 +44,7 @@ jobs:
 # create and release an IPA (iOS App Store Package) file
       # - run: brew install --cask
       # - run: brew cask install fastlane
-      - run: gem unistall fastlane
+      # - run: gem unistall fastlane  - ERROR
       - run: sudo gem install fastlane -NV -n /usr/local/bin
       # - run: gem update --system
       # - run: gem install -n /usr/local/bin/ bundler
