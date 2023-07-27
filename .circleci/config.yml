@@ -1,26 +1,53 @@
-version: 2
-orbs:
-  welcome: circleci/welcome-orb@0.4.1
+# version: 2
+# orbs:
+#   welcome: circleci/welcome-orb@0.4.1
+# jobs:
+#   ios-build:
+#     macos:
+#       xcode: '13.2.1'
+#     working_directory: cd /Users/mac/Projects/React-Native/CicdIos/ios
+#     shell: /bin/bash --login -o pipefail
+#     steps:
+#       - run: gem install fastlane
+#       - run: gem install bundle
+#       - run: ruby -v
+#       - run: bundle -v
+#       - run: gem update fastlane
+#       - run: fastlane --version
+#       - run: touch Gemfile
+#       - run: bundle install
+#       - run: gem install bundler
+#       - run: gem update bundler
+#       - run: bundle update
+#       - run: pwd
+#       - run: bundle exec fastlane release_ipa
+# workflows:
+#   version: 2
+#   build:
+#     jobs:
+#       - ios-build
+
 jobs:
   ios-build:
     macos:
       xcode: '13.2.1'
-    working_directory: cd /Users/mac/Projects/React-Native/CicdIos/ios
+    working_directory: ~/Users/mac/Projects/React-Native/CicdIos
     shell: /bin/bash --login -o pipefail
     steps:
       - run: gem install fastlane
-      - run: gem install bundle
-      - run: ruby -v
-      - run: bundle -v
-      - run: gem update fastlane
       - run: fastlane --version
       - run: touch Gemfile
       - run: bundle install
-      - run: gem install bundler
       - run: gem update bundler
       - run: bundle update
-      - run: pwd
-      - run: bundle exec fastlane release_ipa
+      - run: 
+          command: |
+            cd ios  
+            fastlane --version
+      - run: 
+          command: |
+            cd ios 
+            bundle exec fastlane release_ipa
 workflows:
   version: 2
   build:
