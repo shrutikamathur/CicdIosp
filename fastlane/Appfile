@@ -1,8 +1,0 @@
-app_identifier("com.zluck.rn.demo") # The bundle identifier of your app
-apple_id("ios@zlucksolutions.com") # Your Apple Developer Portal username
-
-itc_team_id("118125527") # App Store Connect Team ID
-team_id("97ZG7PH35K") # Developer Portal Team ID
-
-# For more information about the Appfile, see:
-#     https://docs.fastlane.tools/advanced/#appfile
