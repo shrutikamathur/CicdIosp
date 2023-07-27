@@ -16,7 +16,7 @@ jobs:
       - run: bundle install
       - run: gem update bundler
       - run: bundle update
-      -run: cd Pods
+      - run: cd Pods
       - run: 
           command: |
             fastlane --version
