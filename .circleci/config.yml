@@ -10,7 +10,10 @@ jobs:
     steps:
       # - run: gem install fastlane
       # - run: touch Gemfile
-      - run: cd ios && bundle install
+      - run: 
+          command: |
+            cd ios 
+            bundle install
       # - run: gem update bundler
       # - run: bundle update
       - run: 
