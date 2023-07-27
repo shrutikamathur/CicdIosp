@@ -35,8 +35,8 @@ jobs:
     shell: /bin/bash --login -o pipefail
     steps:
       - run:
-          command: ls -la ios
-          working_directory: cd /Users/mac/Projects/React-Native/CicdIos
+          command: ls /Users/mac/Projects/React-Native/CicdIos/ios
+          # working_directory: cd /Users/mac/Projects/React-Native/CicdIos
       - run: gem install fastlane
       - run: fastlane --version
       - run: touch Gemfile
