@@ -5,27 +5,28 @@ jobs:
   ios-build:
     macos:
       xcode: '13.2.1'
-    working_directory: ~/Projects/React-Native/CicdIos
+    working_directory: /Users/mac/Projects/React-Native/CicdIos
     shell: /bin/bash --login -o pipefail
     steps:
-      - run: mkdir -p ~/Projects/React-Native/CicdIos
+      # - run: mkdir -p ~/Projects/React-Native/CicdIos
       - run: 
           command: |
             cd ios
             gem install fastlane
-      - run: touch Gemfile
-      - run: 
-          command: |
-            cd ios 
-            bundle install
-      # - run: gem update bundler
-      # - run: bundle update
-      - run: 
-          command: |
-            cd ios
-            fastlane --version
-            bundle exec fastlane release_ipa
-      # - run:
+          working_directory: /Users/mac/Projects/React-Native/CicdIos
+      # - run: touch Gemfile
+      # - run: 
+      #     command: |
+      #       cd ios 
+      #       bundle install
+      # # - run: gem update bundler
+      # # - run: bundle update
+      # - run: 
+      #     command: |
+      #       cd ios
+      #       fastlane --version
+      #       bundle exec fastlane release_ipa
+      # # - run:
       #     name: Set up iOS directory
       #     command: mkdir -p ios && cd ios && bundle exec fastlane release_ipa
       # - run: 
