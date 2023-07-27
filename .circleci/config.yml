@@ -12,13 +12,10 @@ jobs:
       # - run: mkdir -p ~/Projects/React-Native/CicdIos
       - run: gem install fastlane
           # working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
-      # - run: touch Gemfile
-      # - run: 
-      #     command: |
-      #       cd ios 
-      #       bundle install
-      # # - run: gem update bundler
-      # # - run: bundle update
+      - run: touch Gemfile
+      - run: bundle install
+      - run: gem update bundler
+      - run: bundle update
       - run: 
           command: |
             fastlane --version
