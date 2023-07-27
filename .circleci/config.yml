@@ -10,9 +10,7 @@ jobs:
     steps:
     # 
       # - run: mkdir -p ~/Projects/React-Native/CicdIos
-      - run: 
-          command: |
-            gem install fastlane
+      - run: gem install fastlane
           # working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
       # - run: touch Gemfile
       # - run: 
@@ -21,7 +19,7 @@ jobs:
       #       bundle install
       # # - run: gem update bundler
       # # - run: bundle update
-      # - run: 
+      - run: 
           command: |
             fastlane --version
             bundle exec fastlane release_ipa
