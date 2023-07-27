@@ -51,7 +51,7 @@ jobs:
       # - run: gem install -n /usr/local/bin/ fastlane
       - run:
           name: Change to iOS directory and run Fastlane
-          command: bundle exec fastlane release_ipa
+          command: cd ios && bundle exec fastlane release_ipa
           # bundle exec fastlane release_ipa
           no_output_timeout: 30m
   # ios-release:
