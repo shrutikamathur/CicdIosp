@@ -22,10 +22,9 @@ jobs:
       # # - run: gem update bundler
       # # - run: bundle update
       # - run: 
-      #     command: |
-      #       cd ios
-      #       fastlane --version
-      #       bundle exec fastlane release_ipa
+          command: |
+            fastlane --version
+            bundle exec fastlane release_ipa
       # # - run:
       #     name: Set up iOS directory
       #     command: mkdir -p ios && cd ios && bundle exec fastlane release_ipa
