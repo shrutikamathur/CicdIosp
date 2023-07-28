@@ -58,10 +58,31 @@
 #       - ios-build
 
 
-version: 2.1
+# version: 2.1
 
-orbs:
-  ios-build: circleci/ios-build@0.1.0
+# orbs:
+#   ios-build: circleci/ios-build@0.1.0
+
+# jobs:
+#   ios-build:
+#     macos:
+#       xcode: '13.2.1'
+#     working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
+#     shell: /bin/bash --login -o pipefail
+#     steps:
+#       - ios-build/install-fastlane
+#       - ios-build/pod-install
+#       # - run:
+#       #     command: |
+#       #       bundle exec fastlane release_ipa
+
+# workflows:
+#   version: 2
+#   build:
+#     jobs:
+#       - ios-build/ios-build
+
+version: 2.1
 
 jobs:
   ios-build:
@@ -70,14 +91,40 @@ jobs:
     working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
     shell: /bin/bash --login -o pipefail
     steps:
-      - ios-build/install-fastlane
-      - ios-build/pod-install
-      # - run:
-      #     command: |
-      #       bundle exec fastlane release_ipa
+      - run:
+          name: Install Fastlane
+          command: gem install fastlane
+
+      - run:
+          name: Check Fastlane Version
+          command: fastlane --version
+
+      - run:
+          name: Create Gemfile
+          command: touch Gemfile
+
+      - run:
+          name: Install Bundler
+          command: gem install bundler
+
+      - run:
+          name: Update Bundler
+          command: gem update bundler
+
+      - run:
+          name: Bundle Install
+          command: bundle install
+
+      - run:
+          name: Bundle Update
+          command: bundle update
+
+      - run:
+          name: CocoaPods Install
+          command: cd /Users/mac/Projects/React-Native/CicdIos/ios && rm -rf Pods && pod install
 
 workflows:
   version: 2
   build:
     jobs:
-      - ios-build/ios-build
+      - ios-build
