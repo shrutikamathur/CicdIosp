@@ -27,6 +27,42 @@
 #     jobs:
 #       - ios-build
 
+# jobs:
+#   ios-build:
+#     macos:
+#       xcode: '13.2.1'
+#     working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
+#     shell: /bin/bash --login -o pipefail
+#     steps:
+#       - run:
+#           # command: ls /Users
+#           working_directory: cd /Users/mac/Projects/React-Native/CicdIos
+#       - run: gem install fastlane
+#       - run: fastlane --version
+#       - run: touch Gemfile
+#       - run: gem install bundler
+#       - run: gem update bundler
+#       - run: bundle install
+#       - run: bundle update
+#       - run:
+#           command: |
+#             cd /Users/mac/Projects/React-Native/CicdIos/ios && rm -rf Pods && pod install
+#           working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
+#       # - run: 
+#       #     command: |
+#       #       bundle exec fastlane release_ipa
+# workflows:
+#   version: 2
+#   build:
+#     jobs:
+#       - ios-build
+
+
+version: 2.1
+
+orbs:
+  ios-build: circleci/ios-build@0.1.0
+
 jobs:
   ios-build:
     macos:
@@ -34,25 +70,14 @@ jobs:
     working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
     shell: /bin/bash --login -o pipefail
     steps:
-      - run:
-          # command: ls /Users
-          working_directory: cd /Users/mac/Projects/React-Native/CicdIos
-      - run: gem install fastlane
-      - run: fastlane --version
-      - run: touch Gemfile
-      - run: gem install bundler
-      - run: gem update bundler
-      - run: bundle install
-      - run: bundle update
-      - run:
-          command: |
-            cd /Users/mac/Projects/React-Native/CicdIos/ios && rm -rf Pods && pod install
-          working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
-      # - run: 
+      - ios-build/install-fastlane
+      - ios-build/pod-install
+      # - run:
       #     command: |
       #       bundle exec fastlane release_ipa
+
 workflows:
   version: 2
   build:
     jobs:
-      - ios-build
+      - ios-build/ios-build

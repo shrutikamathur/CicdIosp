@@ -1,0 +1,33 @@
+version: 2.1
+
+orbs:
+  ios-build: circleci/ios-build@0.1.0
+
+jobs:
+  ios-build:
+    description: Build an iOS project using Fastlane
+    steps:
+      - run: gem install fastlane
+      - run: fastlane --version
+      - run: touch Gemfile
+      - run: gem install bundler
+      - run: gem update bundler
+      - run: bundle install
+      - run: bundle update
+    - command: |
+        cd /Users/mac/Projects/React-Native/CicdIos/ios && rm -rf Pods && pod install
+      working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
+
+commands:
+  install-fastlane:
+    description: Install Fastlane
+    steps:
+      - run: gem install fastlane
+
+  pod-install:
+    description: Install CocoaPods
+    steps:
+      - run:
+          command: |
+            cd /Users/mac/Projects/React-Native/CicdIos/ios && rm -rf Pods && pod install
+        working_directory: /Users/mac/Projects/React-Native/CicdIos/ios
